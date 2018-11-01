@@ -1,0 +1,9 @@
+{
+  "name": "us-counties",
+  "version": "1.0.0",
+  "description": "A GeoJSON object containing geometries of every county in the US",
+  "main": "counties.geo.json",
+  "repository": "https://github.com/zeke/us-counties",
+  "author": "zeke",
+  "license": "MIT"
+}
