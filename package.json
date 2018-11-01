@@ -5,5 +5,5 @@
   "main": "county.geo.json",
   "repository": "https://github.com/zeke/us-counties",
   "author": "zeke",
-  "license": "MIT",
+  "license": "MIT"
 }
