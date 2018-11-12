@@ -5,5 +5,10 @@
   "main": "county.geo.json",
   "repository": "https://github.com/zeke/us-counties",
   "author": "zeke",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "which-polygon": "^2.2.0"
+  },
+  "bin": "server.js"
 }
