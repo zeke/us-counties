@@ -4,15 +4,17 @@
 
 The data came from https://github.com/jgoodall/us-maps, which was derived from US Census shapefiles.
 
+:warning: This module loads a ~200MB JSON object into memory, so your mileage may vary. See [server usage](#server-usage).
+
 ## Installation
 
 ```sh
 npm install us-counties
 ```
 
-## Usage
+## Programmatic Usage
 
-Plays nicely with the [which-polygon](https://ghub.io/which-ploygon) package for looking up counties by lng/lat coordinate:
+This module plays nicely with the [which-polygon](https://ghub.io/which-ploygon) package for looking up counties by lng/lat coordinate:
 
 ```js
 const counties = require('us-counties')
@@ -44,13 +46,22 @@ Results look like this:
   INTPTLON10: '-109.4937467' }
 ```
 
-## Dependencies
+## Server Usage :rocket:
 
-None
+If you're writing a program that is already hungry for RAM, you can
+avoid out-of-memory errors by running this module as a webserver in a separate process:
 
-## Dev Dependencies
+```sh
+$ npx us-counties
+```
 
-None
+Now there's a server running on port 5000. Make requests by passing `lng` and `lat` as query params, like [localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544](http://localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544)
+
+```
+npm i -g json
+curl -s "http://localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544" | json
+```
+
 
 ## License
 
