@@ -4,7 +4,7 @@
 
 The data came from https://github.com/jgoodall/us-maps, which was derived from US Census shapefiles.
 
-:warning: This module loads a ~200MB JSON object into memory, so your mileage may vary. See [server usage](#server-usage).
+:warning: This module loads a ~170MB JSON object into memory, so your mileage may vary. See [server usage](#server-usage) or consider running your process with the v8 `max-old-space-size` flag, like `node -–max-old-space-size=8192 your-file.js`.
 
 ## Installation
 
@@ -43,7 +43,8 @@ Results look like this:
   ALAND10: 29001443825,
   AWATER10: 54175788,
   INTPTLAT10: '+35.3858453',
-  INTPTLON10: '-109.4937467' }
+  INTPTLON10: '-109.4937467',
+  state: 'AZ' }
 ```
 
 ## Server Usage :rocket:
