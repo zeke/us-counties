@@ -2,17 +2,15 @@
 
 > A GeoJSON object containing geometries of every county in the US.
 
-The data came from https://github.com/jgoodall/us-maps, which was derived from US Census shapefiles.
-
-## Performance
-
-:warning: This module loads a ~170MB JSON object into memory, so your mileage may vary. See [server usage](#server-usage) or consider running your process with the v8 `max-old-space-size` flag, like `node -–max-old-space-size=8192 your-file.js`.
+Data courtesy of https://github.com/jgoodall/us-maps, which was derived from US Census shapefiles.
 
 ## Installation
 
 ```sh
 npm install us-counties
 ```
+
+:warning: This module loads a ~170MB JSON object into memory, so your mileage may vary. See [server usage](#server-usage) or consider running your process with the v8 `max-old-space-size` flag, like `node -–max-old-space-size=8192 your-file.js`.
 
 ## Programmatic Usage
 
@@ -49,6 +47,22 @@ Results look like this:
   state: 'AZ' }
 ```
 
+## Server Usage :rocket:
+
+If you're writing a program that is already hungry for RAM, you can
+avoid out-of-memory errors by running this module as a webserver in a separate process:
+
+```sh
+$ npx us-counties
+```
+
+Now there's a server running on port 5000. Make requests by passing `lng` and `lat` as query params, like [localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544](http://localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544)
+
+```
+npm i -g json
+curl -s "http://localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544" | json
+```
+
 ## Fields
 
 From https://www2.census.gov/geo/pdfs/maps-data/data/tiger/tgrshp2010/TGRSHP10SF1AA.pdf
@@ -69,23 +83,6 @@ Field | Length | Type | Description
 `AWATER10` | 14 | Number | 2010 Census water area
 `INTPTLAT10` | 11 | String | 2010 Census latitude of the internal point
 `INTPTLON10` | 12 | String | 2010 Census longitude of the internal point
-
-## Server Usage :rocket:
-
-If you're writing a program that is already hungry for RAM, you can
-avoid out-of-memory errors by running this module as a webserver in a separate process:
-
-```sh
-$ npx us-counties
-```
-
-Now there's a server running on port 5000. Make requests by passing `lng` and `lat` as query params, like [localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544](http://localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544)
-
-```
-npm i -g json
-curl -s "http://localhost:5000/?lng=-109.82152075444654&lat=33.987415215464544" | json
-```
-
 
 ## License
 
