@@ -4,6 +4,8 @@
 
 The data came from https://github.com/jgoodall/us-maps, which was derived from US Census shapefiles.
 
+## Performance
+
 :warning: This module loads a ~170MB JSON object into memory, so your mileage may vary. See [server usage](#server-usage) or consider running your process with the v8 `max-old-space-size` flag, like `node -–max-old-space-size=8192 your-file.js`.
 
 ## Installation
@@ -46,6 +48,27 @@ Results look like this:
   INTPTLON10: '-109.4937467',
   state: 'AZ' }
 ```
+
+## Fields
+
+From https://www2.census.gov/geo/pdfs/maps-data/data/tiger/tgrshp2010/TGRSHP10SF1AA.pdf
+
+Field | Length | Type | Description
+--- | --- | --- | ---
+`STATEFP10` | 2 | String | 2010 Census state FIPS code
+`ANRCFP10` | 5 | String | 2010 Census Alaska Native Regional Corporation FIPS code
+`ANRCNS10` | 8 | String | 2010 Census Alaska Native Regional Corporation ANSI code
+`GEOID10` | 7 | String | Alaska Native Regional Corporation identifier; a concatenation of 2010 Census state FIPS code and Alaska Native Regional Corporation code
+`NAME10` | 100 | String | 2010 Census Alaska Native Regional Corporation name
+`NAMELSAD10` | 100 | String | 2010 Census name and the translated legal/statistical area description for Alaska Native Regional Corporation
+`LSAD10` | 2 | String | 2010 Census legal/statistical area description code for Alaska Native Regional Corporation
+`CLASSFP10` | 2 | String | 2010 Census FIPS class code
+`MTFCC10` | 5 | String | MAF/TIGER feature class code (G2200)
+`FUNCSTAT10` | 1 | String | 2010 Census functional status
+`ALAND10` | 14 | Number | 2010 Census land area
+`AWATER10` | 14 | Number | 2010 Census water area
+`INTPTLAT10` | 11 | String | 2010 Census latitude of the internal point
+`INTPTLON10` | 12 | String | 2010 Census longitude of the internal point
 
 ## Server Usage :rocket:
 
